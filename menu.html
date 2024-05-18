@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000; /* Fundo preto */
+      color: #fff; /* Cor do texto */
+         
+    }
+    
+    #searchInput {
+      padding: 8px 5px;
+      font-size: 20px;
+      border-radius: 10px;
+    }
+    
+    #results {
+      margin-top: 20px;
+      
+    }
+
+    .person {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .person img {
+      width: 130px;
+      height: 200px;
+      border-radius: 5%;
+      margin-right: 10px;
+    }
+
+    .person-name {
+      font-size: 14px;
+    }
+
+    .person-categoria {
+      font-size: 1px;
+      color: #666;
+    }
+
+    .hidden {
+      display: none;
+    }
+  
+  
+  
+  
+  #results {
+            overflow-x: auto; /* Ativa a rolagem horizontal quando necessário */
+            white-space: nowrap; /* Impede que os elementos quebrem linha */
+            display: flex; /* Permite que os elementos dentro do rodapé sejam dispostos horizontalmente */
+            justify-content: flex-start; /* Alinha os elementos à esquerda */
+            align-items: center; /* Centraliza verticalmente os elementos */
+        }
+        
+        #results img {
+              border-radius: 10px; /* Borda retangular com cantos arredondados */
+        }
+  
+  
+  #results {
+    background-color: #000; /* Fundo preto */
+            color: #fff; /* Cor do texto */
+         
+    
+  }
+  
+  
+  .person {
+  flex-direction: column;
+  }
+
+.person-info {
+  margin-top: 5px; /* Espaçamento entre a imagem e as informações */
+}
+  
+  
+  .person-info {
+    width: 100px; /* Defina a largura desejada para o contêiner do nome */
+    white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+    overflow: hidden; /* Esconde qualquer texto que ultrapasse a largura definida */
+    text-overflow: ellipsis; /* Adiciona reticências (...) quando o texto ultrapassa o contêiner */
+  
+ } 
+    .person1 {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .person1 img {
+      width: 120px;
+      height: 80px;
+      border-radius: 5%;
+      margin-right: 10px;
+    }
+
+    .person-name1 {
+      font-size: 14px;
+    }
+
+    .person-categoria1 {
+      font-size: 1px;
+      color: #666;
+    }
+
+    .hidden1 {  
+    }
+  
+  
+  #results1 {
+      margin-top: 20px;
+      
+    }
+  
+     
+  #img2  {
+    position: absolute;
+    float: right;
+    width: 35px;
+      height: 35px;
+      border-radius: 5%;
+      
+      margin-top: -20px;
+    left: 85%;
+}
+  
+  
+  
+  
+  #searchButton {
+    display: inline-block;
+            padding: 10px 10px;
+            margin: 1px;
+            font-size: 18px;
+            border-radius: 50px; /* Borda circular */
+            text-decoration: none;
+            color: #000;
+            border: 2px solid #4CAF50; /* Cor da borda */
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+     transition: background-color 0.3s, box-shadow 0.3s;
+          
+    
+    
+  }
+  
+  
+  
+  #searchButton:hover {
+            background: linear-gradient(to right, #FFD700, #FF4500); /* Arco-íris */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px #FFD900; /* Brilho */
+        }
+  
+  </style>
+</head>
+<body>
+  
+  
+  
+  
+  
+  <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    .menu {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px;
+        background-color: #333;
+        color: white;
+    }
+    .menu-button {
+        cursor: pointer;
+        padding: 5px 10px;
+        border: none;
+        background: transparent;
+        color: inherit;
+    }
+    .home-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        padding: 5px 10px;
+        border: none;
+        background: transparent;
+        color: white;
+    }
+    .dropdown {
+        position: absolute;
+        top: 50px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        display: none;
+    }
+    .dropdown a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 5px 0;
+    }
+    .dropdown a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+</style>
+</head>
+<body>
+
+<button class="home-button" onclick="goHome()">Home</button>
+
+<div class="menu">
+    <button class="menu-button" id="menuButton" onclick="toggleDropdown()">Menu</button>
+    <div class="dropdown" id="dropdown" onmouseleave="hideDropdown()">
+        <a  onclick="filterByCategory('filmes')" href="#">Filmes</a>
+        <a   onclick="filterByCategory('séries')" href="#">Séries</a>
+        <a   onclick="filterByCategory('anime')" href="#">Anime</a>
+        <button onclick="toggleCategories()">Categoria</button>
+        <div id="categories" style="display: none;">
+        <a href="#" onclick="filterByCategory('terror')">Terror</a>
+    <a href="#" onclick="filterByCategory('ação')">Ação</a>
+    <a href="#" onclick="filterByCategory('aventura')">Aventura</a>
+    <a href="#" onclick="filterByCategory('comédia')">Comédia</a>
+    <a href="#" onclick="filterByCategory('romance')">Romance</a>
+    <!-- Adicione mais estilos de filme aqui -->
+    <a href="#" onclick="filterByCategory('drama')">Drama</a>
+    <a href="#" onclick="filterByCategory('ficção científica')">Ficção Científica</a>
+    <a href="#" onclick="filterByCategory('animação')">Animação</a>
+    <a href="#" onclick="filterByCategory('fantasia')">Fantasia</a>
+    <a href="#" onclick="filterByCategory('suspense')">Suspense</a>
+    <a href="#" onclick="filterByCategory('documentário')">Documentário</a>
+    <a href="#" onclick="filterByCategory('musical')">Musical</a>
+    <a href="#" onclick="filterByCategory('mistério')">Mistério</a>
+    <a href="#" onclick="filterByCategory('western')">Western</a>
+    <a href="#" onclick="filterByCategory('história')">História</a>
+    <a href="#" onclick="filterByCategory('guerra')">Guerra</a>
+    <a href="#" onclick="filterByCategory('crime')">Crime</a>
+    <a href="#" onclick="filterByCategory('thriller')">Thriller</a>
+    <a href="#" onclick="filterByCategory('biografia')">Biografia</a>
+    <a href="#" onclick="filterByCategory('esporte')">Esporte</a>
+    <a href="#" onclick="filterByCategory('família')">Família</a>
+    <a href="#" onclick="filterByCategory('cinema negro')">Cinema Negro</a>
+    <a href="#" onclick="filterByCategory('experimental')">Experimental</a>
+    <a href="#" onclick="filterByCategory('cult')">Cult</a>
+    <a href="#" onclick="filterByCategory('outro')">Outro</a>
+</div>
+</div>
+          
+          
+          
+          
+        </div>
+    </div>
+</div>
+
+<script>
+    var dropdown = document.getElementById("dropdown");
+    var categories = document.getElementById("categories");
+
+    function toggleDropdown() {
+        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    }
+
+    function toggleCategories() {
+        categories.style.display = categories.style.display === "none" ? "block" : "none";
+    }
+
+    function hideDropdown() {
+        dropdown.style.display = "none";
+        categories.style.display = "none";
+    }
+
+    function goHome() {
+    // Redirecionar para outra página
+    window.location.href = "home.html";
+}
+</script>
+  
+  
+  
+
+
+  
+  
+  <input type="text" id="searchInput" placeholder="Pesquisar...">
+  <button id="searchButton">🔎</button>
+  <div id="results" class="hidden">
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">Drama/Suspense</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Drama/Crime</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">Drama/Psicológico </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Drama/Mistério</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a6()">
+      <img src="http://comedytube.free.nf/foto/ForrestGump.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Forrest Gump</div>
+        <div class="person-categoria">.Comédia .Suspense</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a7()" > 
+      <img src="http://comedytube.free.nf/foto/AViagemdeChihiro.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">A Viagem de Chihiro</div>
+        <div class="person-categoria">Animação/Fantasia</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a8()">
+      <img src="http://comedytube.free.nf/foto/PulpFiction.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Pulp Fiction</div>
+        <div class="person-categoria">Drama/Crime </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a9()">
+      <img src="http://comedytube.free.nf/foto/Matrix.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Matrix</div>
+        <div class="person-categoria">Ficção Científica/Ação</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a10()">
+      <img src="http://comedytube.free.nf/foto/OSenhordosAnéis.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Senhor dos Anéis</div>
+        <div class="person-categoria">Aventura/Fantasia</div>
+      </div>
+    </div>
+    
+    <div class="person"  onclick="a11()">
+      <img src="http://comedytube.free.nf/foto/ORetornodoRei.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">O Retorno do Rei</div>
+        <div class="person-categoria">.Comédia .Suspense</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a12()" > 
+      <img src="http://comedytube.free.nf/foto/Psicose.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Psicose</div>
+        <div class="person-categoria">Thriller/Psicológico</div>
+      </div>
+    </div>
+    <div class="person"  onclick="13()">
+      <img src="http://comedytube.free.nf/foto/OReiLeão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Rei Leão</div>
+        <div class="person-categoria">Animação/Drama</div>
+      </div>
+    </div>
+    <div class="person"   onclick="a14()">
+      <img src="http://comedytube.free.nf/foto/OResgatedoSoldadoRyan.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Resgate do Soldado Ryan</div>
+        <div class="person-categoria">Drama/Guerra</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a15()">
+      <img src="http://comedytube.free.nf/foto/OIluminado.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Iluminado</div>
+        <div class="person-categoria">Terror/Suspense</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a16()">
+      <img src="http://comedytube.free.nf/foto/CidadedeDeus.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Cidade de Deus</div>
+        <div class="person-categoria">Drama/Crime</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a17()" > 
+      <img src="http://comedytube.free.nf/foto/OsInfiltrados.jpg " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Os Infiltrados</div>
+        <div class="person-categoria">Drama/Crime </div>
+      </div>
+    </div>
+    <div class="person"  onclick="a18()">
+      <img src="http://comedytube.free.nf/foto/OLabirintodoFauno.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Labirinto do Fauno</div>
+        <div class="person-categoria">Fantasia/Drama</div>
+      </div>
+    </div>
+    <div class="person"   onclick="a19()">
+      <img src="http://comedytube.free.nf/foto/AOrigem.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">A Origem</div>
+        <div class="person-categoria">Ficção Científica/Thriller</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a20()">
+      <img src="http://comedytube.free.nf/foto/Interestelar.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Interestelar</div>
+        <div class="person-categoria">Ficção Científica/Aventura</div>
+      </div>
+    </div>
+    
+    
+     <div class="person"  onclick="a21()">
+      <img src="http://comedytube.free.nf/foto/OSextoSentido.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">O Sexto Sentido</div>
+        <div class="person-categoria">.Drama/Suspense  </div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a22()" > 
+      <img src="http://comedytube.free.nf/foto/AListadeSchindler.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">A Lista de Schindler</div>
+        <div class="person-categoria">Drama/Histórico</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a23()">
+      <img src="http://comedytube.free.nf/foto/Gladiador.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Gladiador</div>
+        <div class="person-categoria">Drama/Ação </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a24()">
+      <img src="http://comedytube.free.nf/foto/DeVoltaparaoFuturo.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">De Volta para o Futuro</div>
+        <div class="person-categoria">Ficção Científica/Aventura</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a25()">
+      <img src="http://comedytube.free.nf/foto/Scarface.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Scarface</div>
+        <div class="person-categoria">Drama/Crime</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a26()">
+      <img src="http://comedytube.free.nf/foto/VingadoresUltimato.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Vingadores: Ultimato</div>
+        <div class="person-categoria">.Ação/Aventura </div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a27()" > 
+      <img src="http://comedytube.free.nf/foto/AVidaéBela.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">A Vida é Bela</div>
+        <div class="person-categoria">Drama/Comédia</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a28()">
+      <img src="http://comedytube.free.nf/foto/OShowdeTruman.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Show de Truman</div>
+        <div class="person-categoria">Drama/Comédia </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a29()">
+      <img src="http://comedytube.free.nf/foto/OPianista.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Pianista</div>
+        <div class="person-categoria">Drama/Histórico</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a30()">
+      <img src="http://comedytube.free.nf/foto/Avatar.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Avatar</div>
+        <div class="person-categoria">Ficção Científica/Aventura</div>
+      </div>
+    </div>
+    
+    <div class="person"  onclick="a31()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="32()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a33()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a34()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a35()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a36()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a37()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a38()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a39()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a40()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+     <div class="person"  onclick="a41()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a42()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a43()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a44()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a45()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a46()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a47()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a48()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a49()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a50()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    <div class="person"  onclick="a51()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a52()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a53()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a54()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a55()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a56()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="57()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="58()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="59()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a60()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+     <div class="person"  onclick="a61()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a62()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a63()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a64()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a65()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a66()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a67()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a68()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a69()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a70()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    <div class="person"  onclick="a71()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a72()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a73()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a74()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a75()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a76()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a77()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a78()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a79()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a80()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+     <div class="person"  onclick="a81()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a82()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a83()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a84()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a85()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a86)">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a87()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a88()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a89()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a90()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    <div class="person"  onclick="a91()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a92()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a93()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a94()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a95()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a96()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a97()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a98()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a99()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a100()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+     <div class="person"  onclick="a101()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a102()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a103()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a104()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a105()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a106()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a107()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a108()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a109()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+     <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+     <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    <div class="person"  onclick="a1()">
+      <img src="http://comedytube.free.nf/foto/parasita.jpg" alt="Foto">
+      <div class="person-info">
+        <div  class="person-name">Parasita</div>
+        <div class="person-categoria">.Comédia .Suspense  
+       .Drama</div>
+      </div>
+    </div> 
+    <div class="person"  onclick="a2()" > 
+      <img src="http://comedytube.free.nf/foto/coringa.jpg? " alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Coringa</div>
+        <div class="person-categoria">Comédia .Suspense .Drama</div>
+      </div>
+    </div>
+    <div class="person"  onclick="a3()">
+      <img src="http://comedytube.free.nf/foto/ClubedaLuta.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">Clube da Luta</div>
+        <div class="person-categoria">comédia. ação. </div>
+      </div>
+    </div>
+    <div class="person"   onclick="a4()">
+      <img src="http://comedytube.free.nf/foto/OGrandeTruque.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Grande Truque</div>
+        <div class="person-categoria">Terror</div>
+        
+      </div>
+    </div>
+    <div class="person"   onclick="a5()">
+      <img src="http://comedytube.free.nf/foto/OPoderosoChefão.jpg" alt="Foto">
+      <div class="person-info">
+        <div class="person-name">O Poderoso Chefão</div>
+        <div class="person-categoria">drama</div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  
+  
+  
+  
+  
+  
+  
+    <div id="results1" class="hidden1">
+    
+      <h2>Séries e filmes recomendados</h2>
+      
+      <div class="person1"  onclick="b1()"   >
+      <img src="https://via.placeholder.com/50" alt="Foto">
+      <div class="person-info1">
+        <div  class="person-name1">João</div>
+        <div class="person-categoria1">Comedia</div>
+        
+          <img id="img2" src="http://comedytube.free.nf/foto/play.png" alt="Foto">
+    
+        
+      </div>
+    </div>
+    <div class="person1"  onclick="b2()">
+      <img src="https://via.placeholder.com/50" alt="Foto">
+      <div class="person-info">
+        <div class="person-name1">Maria</div>
+        <div class="person-categoria1">Aventura</div>
+         <img id="img2" src="http://comedytube.free.nf/foto/play.png" alt="Foto">
+    
+      </div>
+    </div>
+    <div class="person1"  onclick="b3()">
+      <img src="https://via.placeholder.com/50" alt="Foto">
+      <div class="person-info1">
+        <div class="person-name1">Pedro</div>
+        <div class="person-categoria1">Acão Aventura</div>
+         <img id="img2" src="http://comedytube.free.nf/foto/play.png" alt="Foto">
+    
+      </div>
+    </div>
+    <div class="person1"  onclick="b4()">
+      <img src="https://via.placeholder.com/50" alt="Foto">
+      <div class="person-info1">
+        <div class="person-name1">Ana</div>
+        <div class="person-categoria1">Comedia</div>
+         <img id="img2" src="http://comedytube.free.nf/foto/play.png" alt="Foto">
+    
+      </div>
+    </div>
+    <div class="person1"   onclick="b5()">
+      <img src="https://via.placeholder.com/50" alt="Foto">
+      <div class="person-info1">
+        <div class="person-name1">Carlos</div>
+        <div class="person-categoria1">Terror</div>
+         <img id="img2" src="http://comedytube.free.nf/foto/play.png" alt="Foto">
+    
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <script>
+    var people = document.querySelectorAll('.person');
+    var searchInput = document.getElementById('searchInput');
+    var results = document.getElementById('results');
+
+    function search() {
+      var input = searchInput.value.toLowerCase();
+
+      if (input.trim() !== '') {
+        results.classList.remove('hidden');
+      } else {
+        results.classList.add('hidden');
+      }
+
+      people.forEach(function(person) {
+        var name = person.querySelector('.person-name').textContent.toLowerCase();
+        if (name.includes(input)) {
+          person.classList.remove('hidden');
+        } else {
+          person.classList.add('hidden');
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', search);
+    document.getElementById('searchButton').addEventListener('click', search);
+  </script>
+
+
+
+
+
+ <script>
+        function a1() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+ <script>
+        function a2() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+ <script>
+        function a3() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+ <script>
+        function a4() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+ <script>
+        function a5() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+ <script>
+        function b1() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+
+
+
+ <script>
+        function b2() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+
+ <script>
+        function b3() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+
+ <script>
+        function b4() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+
+ <script>
+        function b5() {
+                window.open("index.html", "_blank");
+
+        }
+    </script>
+
+
+<script>
+
+function filterByCategory(category) {
+  var people = document.querySelectorAll('.person');
+  people.forEach(function(person) {
+    var personCategory = person.querySelector('.person-categoria').textContent.toLowerCase();
+    if (personCategory.includes(category)) {
+      person.classList.remove('hidden');
+    } else {
+      person.classList.add('hidden');
+    }
+  });
+}
+</script>
+
+
+
+
+</body>
+</html>
