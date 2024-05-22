@@ -695,20 +695,24 @@ function trocarPagina() {
 
 
 <script>
+
+
 function toggleCommentSection() {
-  // Redirecionar para a primeira página
-  window.location.href = 'https://heroianime.blogspot.com';
-  
-  // Redirecionar para a segunda página após um curto atraso
-  setTimeout(function() {
-    window.location.href = 'SORRISOREAL.html';
-  }, 100);
+    // Abre uma nova janela ou guia
+    const novaJanela = window.open('vermais.html', '_blank');
+
+    // Verifica se a nova janela foi aberta com sucesso
+    if (novaJanela) {
+        // Aguarda um breve período de tempo antes de redirecionar a página atual
+        setTimeout(function() {
+            // Redireciona a página atual
+            window.location.href = 'https://heroianime.blogspot.com';
+        }, 100);
+    } else {
+        // Caso a nova janela não possa ser aberta, redireciona a página atual imediatamente
+        window.location.href = 'https://heroianime.blogspot.com';
+    }
 }
-</script>
- 
-
-
-
 </script>
 </body>
 </html>
