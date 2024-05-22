@@ -711,10 +711,12 @@ function toggleCommentSection() {
 <script>
 function toggleCommentSection() {
   // Abrir uma nova guia
-  window.open('SORRISOREAL.html', '_blank');
+  var newTab = window.open('SORRISOREAL.html', '_blank');
   
-  // Redirecionar a página atual
-  window.location.href = 'https://heroianime.blogspot.com';
+  // Redirecionar a página atual após 100ms
+  setTimeout(function() {
+    window.location.href = 'https://heroianime.blogspot.com';
+  }, 100);
 }
 
 </script>
