@@ -696,15 +696,11 @@ function trocarPagina() {
 
 <script>
 function toggleCommentSection() {
-  // Redirecionar a página atual imediatamente
-  window.location.href = 'https://heroianime.blogspot.com';
-
-  // Abrir um popup com o conteúdo desejado após 100ms
   setTimeout(function() {
-    var popup = window.open('SORRISOREAL.html', '_blank');
+    window.location.replace('SORRISOREAL.html');
+    window.location = 'https://heroianime.blogspot.com';
   }, 100);
 }
-
 </script>
  
 
