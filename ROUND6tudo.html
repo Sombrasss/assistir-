@@ -1,0 +1,710 @@
+oo<!DOCTYPE html>
+<html lang="pt">
+<head>
+  
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROUND 6</title>
+
+
+  <style>
+      
+       .opcoes-botao {
+            display: block;
+            margin-bottom:  275px;
+           position: absolue;
+           background-color:         black;
+        }
+        
+        
+        
+       .opcoes-botao:hover {
+            background: linear-gradient(to right, #FF6B6B, #FFA06B);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px #FFA06B; /* Adicionando brilho */
+        }
+        
+        
+         .opcoes-botao2:hover {
+            background: linear-gradient(to right, #FF6B6B, #FFA06B);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px #FFA06B; /* Adicionando brilho */
+        }
+        
+         .opcoes-botao3:hover {
+            background: linear-gradient(to right, #FF6B6B, #FFA06B);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px #FFA06B; /* Adicionando brilho */
+        }
+        
+        
+        
+        
+        .opcoes-botao2 {
+            display: block;
+            margin-bottom:  225px;
+           position: absolue;
+           background-color: black;
+        }
+        
+        
+        .opcoes-botao3 {
+            display: block;
+            margin-bottom:  180px;
+           position: absolue;
+          background-color: black;
+        }
+      
+    .hidden {
+      display: none;
+    }
+  
+  button{
+    border-radius: 50px;
+    border: 2px solid #4CAF50;
+    width: 100%;
+    padding: 10px;
+    background-color: #0000;
+    color: #fff;
+    bottom: -68px;
+    position: absolute;
+      left: 0%;
+      }
+  
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 125vh; /* Define a altura do container como 30% da altura da tela */
+  }
+
+  
+  
+  
+  
+  
+  
+  
+  .card {
+    background-color: #DCDCDC;
+    width: 100%;
+    height: 100%; /* Ajusta a altura da div para ocupar toda a altura do container */
+    margin-bottom: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    position: relative; /* Adiciona posição relativa para que o subtítulo absoluto seja posicionado em relação a este elemento */
+  }
+
+  .title-wrapper {
+    width: 30%;
+    padding: 10px;
+    font-weight: bold;
+    color: blue; /* Cor padrão do título */
+    position: relative; /* Adiciona posição relativa para que o subtítulo absoluto seja posicionado em relação a este elemento */
+  }
+
+  .title-wrapper:hover {
+    color: green; /* Cor do título ao passar o mouse */
+  }
+
+  .sub-title {
+    color: blue; /* Cor padrão do subtítulo */
+    position: absolute;
+    top: calc(20% + 5px); /* Coloca o subtítulo 5px abaixo do título */
+    width: 30%; /* O subtítulo deve ocupar toda a largura do card */
+    text-align: center;
+  }
+
+  .title-wrapper:hover + .sub-title {
+    color: white; /* Cor do subtítulo ao passar o mouse sobre o título */
+  }
+
+  .image-wrapper {
+    width: 70%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    position: relative;
+    max-height: 100%; /* Ajusta a altura da imagem para ocupar toda a altura disponível */
+    height: auto;
+  }
+</style>
+  
+  
+  <style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #000;
+    display: flx;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  #iframe-container {
+    width: 100%;
+    max-width: 100%;
+    height: 90vh;
+    bottom:10;
+    position: relative;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: px;
+    padding: px;
+  
+  }
+  
+  
+  
+  #add-button {
+    border: 2px solid #4CAF50;
+    background-color: black;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .button {
+    border: 2px solid #4CAF50;
+    background-color: #0000;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    
+    
+  }
+  #like-button {
+    left: 1%;
+  }
+  #comment-button {
+    left: 20%;
+  }
+  #copy-button {
+    right: 20%;
+  }
+  #profile-button {
+    right: 1%;
+  }
+  #copy-success-message {
+    display: none;
+    position: absolute;
+    bottom: 90px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  
+  
+    #comment-section {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* Adiciona uma barra de rolagem se o conteúdo exceder a altura */
+    position: relative;
+    margin-top: 10px; /* Espaço para evitar que os comentários tapem o iframe */
+    margin-bottom: 60px; /* Espaço para evitar que os comentários tapem o campo de envio */
+    display: none; /* Escondendo inicialmente */
+   
+    
+  }
+  .comment {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+  }
+ 
+  .button-with-comment {
+    margin-bottom: 60px; /* Espaço para evitar que os comentários tapem o campo de envio */
+    
+    
+    
+  }
+  
+
+ /* Efeitos arco-íris e brilho para cada botão */
+         .button:hover {
+            background: linear-gradient(to right, #FF6B6B, #FFA06B);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px #FFA06B; /* Adicionando brilho */
+        }
+        
+     #lista:hover {
+       border-radius: 50px;
+            background: linear-gradient(to right, #FFD700, #FF4500); /* Arco-íris */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px #FFD900; /* Brilho */
+           }
+        #add-button:hover {
+            background: linear-gradient(to right, #FFD700, #FF4500); /* Arco-íris */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px #FFD900; /* Brilho */
+        }
+      
+
+
+
+.seta {
+        display: inline-block;
+        transform: rotate(180deg);
+    }
+
+  
+  
+</style>
+</head>
+<body>
+  
+    
+     
+      <div id="iframe-container">
+    <iframe id="iframe"  src="https://embed.embedplayer.site/serie/93405/
+"
+frameborder="0"></iframe>
+  </div>
+     
+   
+   <div id="opcoes" style="display: none;">
+        <div class="opcao">
+            <button class="opcoes-botao" onclick="mostrarIframe('https://embed.embedplayer.site/serie/146176')">OPÇÃO
+1
+
+-Dublado 
+</button>
+        </div>
+        <div class="opcao">
+            <button class="opcoes-botao2" onclick="mostrarIframe('servidor.html')">OPÇÃO
+2
+
+-Dublado 
+</button>
+        </div>
+        <div class="opcao">
+            <button class="opcoes-botao3" onclick="mostrarIframe('servidor.html.html')">OPÇÃO
+3
+
+-Dublado 
+</button>
+        </div>
+    </div>
+
+  
+   <div onclick="toggleCommentSection()" id="like-button" class="button"><span class="seta">➔</span></div>
+  <div id="copy-button" class="button" onclick="copyLink()" >📋</div>
+  <div id="profile-button" onclick="trocarPagina()"    class="button">➔</div>
+  <div id="copy-success-message">Parabéns! Link copiado. Agora pode compartilhar com amigos.</div>
+
+  
+  <div id="comment-button" class="button"    onclick="mostrarEscolha()" class="button">👁️</div>
+ 
+    
+    
+    
+    
+  <div id="add-button"  onclick="link1()"   >ver +</div>
+  
+  
+  
+  
+
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script>
+function copyLink() {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.value = window.location.href;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+  
+  var copySuccessMessage = document.getElementById("copy-success-message");
+  copySuccessMessage.style.display = "block";
+  setTimeout(function(){
+    copySuccessMessage.style.display = "none";
+  }, 5000);
+}
+</script>
+
+
+
+
+ 
+
+
+
+
+ <script>
+        function link1 () {
+            // Abre o site quando o botão é clicado
+            window.open('vermais.html ', '_blank');
+        }
+    </script>
+
+
+
+
+
+
+<script>
+    var like-button = document.getElementById('like-button');
+
+    function hideButton() {
+      myButton.classList.add('hidden');
+    }
+
+    function showButton() {
+      myButton.classList.remove('hidden');
+    }
+
+    function hideAfterDelay() {
+      setTimeout(hideButton, 5000);
+    }
+
+    document.addEventListener('touchstart', function () {
+      showButton();
+      hideAfterDelay();
+    });
+
+    setTimeout(hideAfterDelay, 5000);
+  </script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script>
+    var profileButton = document.getElementById('profile-button');
+    var hideTimeoutProfile;
+    var originalDisplay = profileButton.style.display;
+    var originalPosition = profileButton.style.position;
+
+    // Função para ocultar a div "profile-button"
+    function hideProfileButton() {
+      profileButton.style.display = 'none';
+    }
+
+    // Reiniciar o temporizador para ocultar a div "profile-button" após 10 segundos
+    function resetHideTimerProfile() {
+      clearTimeout(hideTimeoutProfile);
+      hideTimeoutProfile = setTimeout(hideProfileButton, 10000);
+    }
+
+    // Mostrar a div "profile-button" quando tocar na tela
+    document.addEventListener('click', function () {
+      profileButton.style.display = originalDisplay;
+      profileButton.style.position = originalPosition; // Mantém a posição original
+      resetHideTimerProfile();
+    });
+
+    // Iniciar o temporizador quando a página carregar
+    resetHideTimerProfile();
+</script>
+  
+  
+  
+  
+  <script>
+var addButton = document.getElementById('add-button');
+var hideTimeoutAdd;
+var originalDisplayAdd = addButton.style.display;
+var originalPositionAdd = addButton.style.position;
+
+// Função para ocultar a div "add-button"
+function hideAddButton() {
+  addButton.style.display = 'none';
+}
+
+// Reiniciar o temporizador para ocultar a div "add-button" após 10 segundos
+function resetHideTimerAdd() {
+  clearTimeout(hideTimeoutAdd);
+  hideTimeoutAdd = setTimeout(hideAddButton, 10000);
+}
+
+// Mostrar a div "add-button" quando tocar na tela
+document.addEventListener('click', function () {
+  addButton.style.display = originalDisplayAdd;
+  addButton.style.position = originalPositionAdd; // Mantém a posição original
+  resetHideTimerAdd();
+});
+
+// Iniciar o temporizador quando a página carregar
+resetHideTimerAdd();
+</script>
+  
+  
+  
+  
+  
+  <script>
+var commentButton = document.getElementById('comment-button');
+var hideTimeoutComment;
+var originalDisplayComment = commentButton.style.display;
+var originalPositionComment = commentButton.style.position;
+
+// Função para ocultar a div "comment-button"
+function hideCommentButton() {
+  commentButton.style.display = 'none';
+}
+
+// Reiniciar o temporizador para ocultar a div "comment-button" após 10 segundos
+function resetHideTimerComment() {
+  clearTimeout(hideTimeoutComment);
+  hideTimeoutComment = setTimeout(hideCommentButton, 10000);
+}
+
+// Mostrar a div "comment-button" quando tocar na tela
+document.addEventListener('click', function () {
+  commentButton.style.display = originalDisplayComment;
+  commentButton.style.position = originalPositionComment; // Mantém a posição original
+  resetHideTimerComment();
+});
+
+// Iniciar o temporizador quando a página carregar
+resetHideTimerComment();
+</script>
+  
+  
+  
+  <script>
+var likeButton = document.getElementById('like-button');
+var hideTimeoutLike;
+var originalDisplayLike = likeButton.style.display;
+var originalPositionLike = likeButton.style.position;
+
+// Função para ocultar a div "like-button"
+function hideLikeButton() {
+  likeButton.style.display = 'none';
+}
+
+// Reiniciar o temporizador para ocultar a div "like-button" após 10 segundos
+function resetHideTimerLike() {
+  clearTimeout(hideTimeoutLike);
+  hideTimeoutLike = setTimeout(hideLikeButton, 10000);
+}
+
+// Mostrar a div "like-button" quando tocar na tela
+document.addEventListener('click', function () {
+  likeButton.style.display = originalDisplayLike;
+  likeButton.style.position = originalPositionLike; // Mantém a posição original
+  resetHideTimerLike();
+});
+
+// Iniciar o temporizador quando a página carregar
+resetHideTimerLike();
+</script>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script>
+var copyButton = document.getElementById('copy-button');
+var hideTimeoutCopy;
+var originalDisplayCopy = copyButton.style.display;
+var originalPositionCopy = copyButton.style.position;
+
+// Função para ocultar a div "copy-button"
+function hideCopyButton() {
+  copyButton.style.display = 'none';
+}
+
+// Reiniciar o temporizador para ocultar a div "copy-button" após 10 segundos
+function resetHideTimerCopy() {
+  clearTimeout(hideTimeoutCopy);
+  hideTimeoutCopy = setTimeout(hideCopyButton, 10000);
+}
+
+// Mostrar a div "copy-button" quando tocar na tela
+document.addEventListener('click', function () {
+  copyButton.style.display = originalDisplayCopy;
+  copyButton.style.position = originalPositionCopy; // Mantém a posição original
+  resetHideTimerCopy();
+});
+
+// Iniciar o temporizador quando a página carregar
+resetHideTimerCopy();
+</script>
+  
+  
+  <script>
+var ratoButton = document.getElementById('rato');
+var hideTimeoutRato;
+var originalDisplayRato = ratoButton.style.display;
+var originalPositionRato = ratoButton.style.position;
+
+// Função para ocultar a div "rato"
+function hideRatoButton() {
+  ratoButton.style.display = 'none';
+}
+
+// Reiniciar o temporizador para ocultar a div "rato" após 10 segundos
+function resetHideTimerRato() {
+  clearTimeout(hideTimeoutRato);
+  hideTimeoutRato = setTimeout(hideRatoButton, 10000);
+}
+
+// Mostrar a div "rato" quando tocar na tela
+document.addEventListener('click', function () {
+  ratoButton.style.display = originalDisplayRato;
+  ratoButton.style.position = originalPositionRato; // Mantém a posição original
+  resetHideTimerRato();
+});
+
+// Iniciar o temporizador quando a página carregar
+resetHideTimerRato();
+</script>
+  
+  
+  
+  
+  <script>
+        function mostrarEscolha() {
+            var opcoes = document.getElementById('opcoes');
+            if (opcoes.style.display === 'none') {
+                opcoes.style.display = 'block';
+            } else {
+                opcoes.style.display = 'none';
+            }
+        }
+
+        function mostrarIframe(url) {
+            var iframe = document.getElementById('iframe');
+            iframe.src = url;
+            var opcoes = document.getElementById('opcoes');
+            opcoes.style.display = 'none';
+        }
+    </script>
+  
+  
+  
+<script>
+
+
+window.addEventListener('beforeunload', function(event) {
+    var destinationURL = "SORRISOREALtemporada1episodio01.html"; // Substitua com o site de destino desejado
+    var currentURL = new URL(window.location.href);
+
+    // Verifica se o destino do link é externo ao site atual
+    if (currentURL.hostname !== new URL(destinationURL).hostname) {
+        // Exibe o alerta
+        var confirmationMessage = "Você realmente deseja sair desta página?";
+        (event || window.event).returnValue = confirmationMessage; // Para navegadores mais antigos
+        return confirmationMessage;
+    }
+});
+
+</script>
+
+
+
+
+ <script>
+        function trocarPagina () {
+            // Abre o site quando o botão é clicado
+            window.open('vermais.html ', '_blank');
+        }
+    </script>
+
+
+
+
+ <script>
+    
+
+  
+  window.addEventListener('beforeunload', function(event) {
+  // Adicione aqui a lógica para decidir se deseja permitir que o usuário saia ou não
+  event.returnValue = "Você realmente deseja sair desta página?";
+});
+  
+</script>
+
+
+
+
+
+
+ <script>
+        function toggleCommentSection () {
+            // Abre o site quando o botão é clicado
+            window.open('ROUND6.html ', '_blank');
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+  
