@@ -3,192 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css"/>
   
-  <style>
-    body {
-      background-color: black; /* Cor de fundo preta para a página */
-      
-      
-    }
-    
-    #iframe {
-      width: 100%;
-      height: 40vh;
-      position: absolute;
-      top: 5%;
-      left: 0;
-    }
-    
-  
-  
-  
-  
-  
-    .image-container {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1vh; /* Ajuste conforme necessário */
-    }
-    
-  
-  #image-container {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 70vh; /* Ajuste conforme necessário */
-    }
-    
-  
-  
-    .image-container div {
-      margin: 5px; /* Adiciona margem de 10px em todas as direções */
-      padding: 0px; /* Adiciona preenchimento de 20px em todas as direções */
-      background-color: white; /* Cor de fundo branca para as divs */
-      border-radius: 0 0 20px 20px; /* Borda inferior circular */
-    }
-    
-    .image-container img {
-      width: 100%; /* Ajusta a largura da imagem para ocupar toda a div */
-    }
-    
-    .image-container p {
-      margin-top: 10px; /* Adiciona espaço entre a imagem e o título */
-    }
-  
-  .botao {
-      
-      text-align: center;
-      
-      left: 2%;
-      display: inline-block;
-      padding: 10px 10px; 
-      
-      border-radius: 50px; /* Borda circular */
-      text-decoration: none;
-      color: #fff;
-      border: 2px solid #4CAF50; /* Cor da borda */
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-      width: 90%;
-      margin: 4px auto; /* Adicione margem para distância entre os vídeos */
-      position: relative; /* Para posicionar os títulos e subtítulos */
-      bottom: -220px;
-        }
-  
-  
-  
-   
-  .botao2 {
-      
-      text-align: center;
-      
-      left: 2%;
-      display: inline-block;
-      padding: 10px 10px; 
-      
-      border-radius: 50px; /* Borda circular */
-      text-decoration: none;
-      color: #fff;
-      border: 2px solid #4CAF50; /* Cor da borda */
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-      width: 90%;
-      margin: 4px auto; /* Adicione margem para distância entre os vídeos */
-      position: relative; /* Para posicionar os títulos e subtítulos */
-      bottom: 0px;
-        }
-  
-  
-  
-    
-  .botao:hover {
-            background: linear-gradient(to right, #FFD700, #FF4500); /* Arco-íris */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px #FFD900; /* Brilho */
-        }
-  
-  
-  .data {
-          margin: -100px auto;
-            
-            position: absolute;
-            bottom: 100%;
-            left: 70%;
-            }
-  
-  .tipo {
-    margin: 100px;
-            
-            
-            }
-    
-    
-  
-  
-  .video-info {
-     color: #fff;
-          
-        bottom: -220px;
-            width: 100%;
-            text-align: left;
-            padding-left: 10px;
-            box-sizing: border-box;
-            position: relative;
-            
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
-      }
-  
-  </style>
-
-
- <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        padding-top: 50px; /* Adicionando espaço no topo para o menu */
-    }
-    .menu {
-      
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 999; /* Para garantir que o menu esteja acima de outros elementos */
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 10px;
-        background-color: #333;
-        color: white;
-    }
-    .menu-button {
-      
-        cursor: pointer;
-        padding: 5px 20px;
-        border: none;
-        background: transparent;
-        color: inherit;
-    }
-    .home-button {
-      
-        position: absolute;
-        top: 10px;
-        left: 0%;
-        cursor: pointer;
-        padding: 5px 10px;
-        border: none;
-        background: transparent;
-        color: white;
-    }
-    /* Adicionando margem para que o conteúdo não seja sobreposto pelo menu */
-    main {
-        margin-top: 50px; /* Ajuste conforme necessário */
-    }
-
-h2{
-  color: white;
-  
-  
-}
-</style>
 </head>
 <body>
 
@@ -249,80 +65,7 @@ function goHome() {
       
   
   
-  <style>
-  h3 {
-            margin-top: 50px; /* Margem superior para o título */
-            
-        }
-
-        #seasonSelect {
-        
-       
-    font-size: 18px;
-            margin-bottom: 20px; /* Margem inferior para o seletor de temporada */
-        }
-
-        .episodeList {
-          overflow-x: auto; /* Ativa a rolagem horizontal quando necessário */
-       height: 400px;
-        border-radius: 0 0 5% 5%;
-        background-color :  #242424;
-            borde: 1px solid gray; /* Adiciona borda cinza ao redor dos episódios */
-            padding: 10px; /* Espaçamento interno dos episódios */
-            margin: 0 auto 10px auto; /* Margem automática para centralizar e adicionar espaço abaixo */
-            max-width: 400px; /* Largura máxima para a lista de episódios */
-            text-align: left; /* Alinha o texto dos episódios à esquerda */
-        }
-
-        .episodeList a {
-            text-decoration: none; /* Remove o sublinhado dos links */
-            color: white; /* Define a cor do texto do link como branca */
-        }
-
-        .separator {
-            border-top: 1px solid gray; /* Adiciona linha cinza para separar os episódios */
-            margin: 20px auto; /* Margem automática para centralizar a linha */
-            max-width: 400px; /* Largura máxima para a linha */
-            Posicione
-        }
-
-     
-
- #img2  {
-    position: relative;
-    float: right;
-    width: 35px;
-      height: 35px;
-      border-radius: 5%;
-      
-      margin-top: -8px;
-    left: 48%;
-}
-      
-      
-     .lua {
-       
-       margin-top: 50vh; 
-     text-align: center; /* Centraliza o conteúdo */
-        background-color : #4682B4; 
-        border-radius: 5%;
-         
-         
-     } 
-     
-       .row {
-         
-         
-        display: flex;
-        border: 1px solid gray;
-        
-    }
-    
-        .row  {
-        padding: 0px;
-    }
-
-    </style>
+  
 </head>
 <body>
     
@@ -355,87 +98,66 @@ function goHome() {
 
 
   <div class="image-container"   id="image-container">
-    
-      
-
-    
-    
-   
-          <h2 class="h2">
+      <h2 class="h2">      
   
-  Titulos semelhantes
+  Titulos populares
 </h2>
          
   </div>
   <div class="image-container">
-    <div>
-      <img src="1.jpg" alt="Descrição da foto 1">
-     <p><h4>Título da Foto 2</h4></p>
-   </div>
-    
-    <div>
-      <img src="2.jpg" alt="Descrição da foto 2">
-<p><h4>Título da Foto 2</h4></p>
-   </div>
-  </div>
-  <div class="image-container">
-    <div>
-      <img src="1.jpg" alt="Descrição da foto 1">
-      <p><h4>Título da Foto 2</h4></p>
-  </div>
-    
-    <div>
-      <img src="2.jpg" alt="Descrição da foto 2">
-     <p><h4>Título da Foto 2</h4></p>
-   </div>
-  </div>
-  <div class="image-container">
-    <div>
-      <img src="1.jpg" alt="Descrição da foto 1">
-     <p><h4>Título da Foto 2</h4></p>
-  </div>
-    
-    <div>
-      <img src="2.jpg" alt="Descrição da foto 2">
-      <p><h4>Título da Foto 2</h4></p>
-  </div>
-  </div>
-  <div class="image-container">
-    <div>
-      <img src="1.jpg" alt="Descrição da foto 1">
-      <p><h4>Título da Foto 2</h4></p>
-   </div>
-    
-    <div>
-      <img src="2.jpg" alt="Descrição da foto 2">
-    <p><h4>Título da Foto 2</h4></p>
-     </div>
-  </div>
-  <div class="image-container">
-    <div>
-      <img src="1.jpg" alt="Descrição da foto 1">
-      <p><h4>Título da Foto </h4></p>
- </div>
-    
-    <div>
-      <img src="2.jpg" alt="Descrição da foto 2">
-      <p><h4>Título da Foto 2</h4></p>
-    </div>
-  </div>
-  <div class="image-container">
-    <div>
-      <img src="1.jpg" alt="Descrição da foto 1">
-      <p><h4>Título da Foto 2</h4></p>
-  </div>
-    
-    <div>
-      <img src="2.jpg" alt="Descrição da foto 2">
-      <p><h4>Título da Foto 2</h4></p>
-    </div>
-  </div>
+    <a href="DEXTER.html"><img src="DEXTER.jpg" ></a>
+     <a href="VIKINGS.html" ><img src="VIKINGS.jpg" ></a>
 
+   </div>
+  </div>
   
+  <div class="image-container">
+    <a href="OZARK.html"><img src="OZARK.jpg" alt="Descrição da foto 1"></a>
+     <a href="VISAVIS.html" ><img src="VISAVIS.jpg" ></a>
+
+   </div>
+  </div>
   
+  <div class="image-container">
+    <a href="ROUND6.html"><img src="ROUND6.jpg" ></a>
+     <a href="ELITE.html" ><img src="ELITE.jpg" ></a>
+
+   </div>
+  </div>
+<div class="image-container">
+    <a href="WANDINHA.html"><img src="WANDINHA.jpg" ></a>
+     <a href="AFURIADEPARIShtml" ><img src="AFURIADEPARIS.jpg" ></a>
+
+   </div>
+  </div>
+  <div class="image-container">
+    <a href="PEAKYBLINDERS.html"><img src="PEAKYBLINDERS.jpg" ></a>
+     <a href="VIKINGS.html" ><img src="VIKINGS.jpg"  ></a>
+
+   </div>
+  </div>
+  <div class="image-container">
+    <a href="LACASADEPAPEL.html"><img src="LACASADEPAPEL.jpg" </a>
+     <a href="THEWITCHER.html" ><img src="THEWITCHER.jpg" ></a>
+
+   </div>
+  </div>
+    
+    <div class="image-container">
+    <a href="SORRISOREAL.html"><img src="SORRISOREAL.jpg" </a>
+     <a href="MRROBOT.html" ><img src="MRROBOT.jpg" ></a>
+
+   </div>
+  </div>
+    <div class="image-container">
+    <a href="THEBOYS.html"><img src="THEBOYS.jpg" </a>
+     <a href="NARCOS.html" ><img src="NARCOS.jpg" ></a>
+
+   </div>
+  </div>
+    
+    
+    
   
     
     
