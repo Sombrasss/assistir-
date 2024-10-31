@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câmbio de Venda</title>
+    <style>
+        /* Seu estilo CSS permanece o mesmo */
+    
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin: 20px auto; /* Espaço entre as seções */
+            width: 300px; /* Define a largura das seções */
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        .rate {
+            font-size: 36px;
+            color: #007bff;
+            margin: 20px 0;
+        }
+        .update {
+            font-size: 14px;
+            color: #666;
+        }
+        .input-container {
+            margin: 20px 0;
+        }
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100px;
+            text-align: center;
+        }
+        .sell-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .sell-button:hover {
+            background-color: #218838;
+        }
+    
+    
+      .sell-button {
+            background-color: #F29200;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .sell-button:hover {
+            background-color: #218838;
+        }
+    .sell-button3 {
+            background-color: #F29200;
+            color: white;
+            border: none;
+            padding: 10px 44px;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    
+    .sell-button2 {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 40px;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    
+    .sell-button4 {
+            background-color: #F29200;
+            color: white;
+            border: none;
+            padding: 10px 65px;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    
+    .sell-button1 {
+            background-color: #F29200;
+            color: white;
+            border: none;
+            padding: 10px 48px;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    
+    
+    
+    
+    
+    </style>
+</head>
+<body>
+
+    <button class="sell-button1" onclick="vender()">Perfil</button>
+    <button class="sell-button3" onclick="comprar()">Mercado livre</button>
+    <button class="sell-button2" onclick="venda()">Vender</button>
+    <button class="sell-button4" onclick="comprar()">Comprar</button>
+
+    <div class="container">
+        <h1>Câmbio de Venda - Euro</h1>
+        <div class="rate">1 EUR = 1150 AKZ</div>
+        <div class="update">Última atualização: 11 de Outubro de 2024</div>
+        <div class="input-container">
+            <label for="euroAmount">Quantidade (1-500 EUR):</label><br>
+            <input type="number" id="euroAmount" min="1" max="500" value="1">
+        </div>
+        <button class="sell-button" onclick="vender('EUR')">Solicitar venda</button>
+    </div>
+
+    <div class="container">
+        <h1>Câmbio de Venda - USDT</h1>
+        <div class="rate">1 USDT = 1100 AKZ</div>
+        <div class="update">Última atualização: 11 de Outubro de 2024</div>
+        <div class="input-container">
+            <label for="usdtAmount">Quantidade (1-500 USDT):</label><br>
+            <input type="number" id="usdtAmount" min="1" max="500" value="1">
+        </div>
+        <button class="sell-button" onclick="vender('USDT')">Solicitar venda</button>
+    </div>
+
+    <div class="container">
+        <h1>Câmbio de Venda - Dólar</h1>
+        <div class="rate">1 USD = 1100 AKZ</div>
+        <div class="update">Última atualização: 11 de Outubro de 2024</div>
+        <div class="input-container">
+            <label for="usdAmount">Quantidade (1-500 USD):</label><br>
+            <input type="number" id="usdAmount" min="1" max="500" value="1">
+        </div>
+        <button class="sell-button" onclick="vender('USD')">Solicitar venda</button>
+    </div>
+
+    <script>
+        function vender(moeda) {
+            let quantidade;
+            if (moeda === 'EUR') {
+                quantidade = document.getElementById("euroAmount").value;
+            } else if (moeda === 'USDT') {
+                quantidade = document.getElementById("usdtAmount").value;
+            } else if (moeda === 'USD') {
+                quantidade = document.getElementById("usdAmount").value;
+            }
+
+            // Verifica se a quantidade está dentro dos limites
+            if (quantidade < 1 || quantidade > 500) {
+                alert("Por favor, insira uma quantidade entre 1 e 500 " + moeda + ".");
+            } else {
+                // Envia a mensagem para o WhatsApp com a quantidade e a moeda
+                let whatsappURL = `https://wa.me/244935947421?text=Estou%20vendendo%20${quantidade}%20${moeda}.`;
+                window.open(whatsappURL, '_blank');
+            }
+        }
+
+        function comprar() {
+            window.location.href = "comprar.html";
+        }
+        
+        function venda() {
+            window.location.href = "venda.html";
+        }
+        
+    </script>
+
+</body>
+</html>
